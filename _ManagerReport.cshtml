@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Stock Report | iBhayi Pharmacy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .pharmacy-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+            .report-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: var(--primary);
+                border-color: var(--primary);
+                transform: scale(1.05);
+            }
+
+        .info-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .feature-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border: 1px solid #dce4ec;
+            border-radius: 6px;
+            padding: 0.75rem;
+        }
+
+            .form-control:focus {
+                border-color: var(--secondary);
+                box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            }
+
+        .page-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+            .page-title:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background-color: var(--accent);
+                border-radius: 2px;
+            }
+
+        .footer {
+            color: black;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="report-card">
+                    <h2 class="page-title">Medication Stock Report</h2>
+
+                    <div class="alert alert-info mb-4">
+                        <h5><i class="fas fa-info-circle"></i> Report Instructions</h5>
+                        <p class="mb-0">
+                            Select how you would like to group the medication stock report. The generated PDF will include
+                            subtotals for each category and a final grand total, suitable for professional stock-taking procedures.
+                        </p>
+                    </div>
+
+                    <form asp-action="ManagerReport" method="post" class="mt-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group mb-4">
+                                    <label for="groupBy" class="form-label fw-bold">Group Report By:</label>
+                                    <select id="groupBy" name="groupBy" class="form-select form-control-lg">
+                                        <option value="Supplier">Supplier</option>
+                                        <option value="DosageForm">Dosage Form</option>
+                                        <option value="Schedule">Schedule</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-file-pdf me-2"></i> Generate PDF Report
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="info-box mt-5">
+                        <h5><i class="fas fa-clipboard-check feature-icon"></i> Report Features</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Professional layout with iBhayi Pharmacy branding</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Cover page with pharmacy details</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Medication data grouped by your selected category</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Subtotals for each category group</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Final grand total for all medications</li>
+                            <li class="mb-0"><i class="fas fa-check text-success me-2"></i> Headers and footers on each page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>iBhayi Pharmacy</h5>
+                    <p>Professional medication management and pharmaceutical services</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>&copy; @DateTime.Now.Year iBhayi Pharmacy. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

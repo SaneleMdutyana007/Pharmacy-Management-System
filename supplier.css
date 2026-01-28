@@ -1,0 +1,512 @@
+﻿:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --gray-color: #95a5a6;
+    --info-color: #17a2b8;
+}
+
+/* Compact Layout Styles */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Button Styles */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 70px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+    .btn-primary:hover:not(:disabled) {
+        background-color: #2980b9;
+        transform: translateY(-1px);
+    }
+
+.btn-secondary {
+    background-color: var(--gray-color);
+    color: white;
+}
+
+    .btn-secondary:hover:not(:disabled) {
+        background-color: #7f8c8d;
+    }
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+    .btn-danger:hover:not(:disabled) {
+        background-color: #c0392b;
+    }
+
+/* Action Buttons */
+.btn-edit, .btn-delete, .btn-details {
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin: 1px;
+}
+
+.btn-edit {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-details {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+    .btn-edit:hover, .btn-delete:hover, .btn-details:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+/* Compact Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    font-size: 12px;
+}
+
+    .data-table th,
+    .data-table td {
+        padding: 8px 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        line-height: 1.3;
+    }
+
+    .data-table th {
+        background-color: white;
+        color: black;
+        font-weight: 600;
+        border: none;
+        border-bottom: 2px solid var(--primary-color);
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .data-table tr:hover {
+        background-color: #f8f9fa;
+    }
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: var(--light-color) !important;
+    color: black;
+    border-bottom: none;
+    padding: 12px 15px;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.2s ease;
+}
+
+    .form-control:focus, .form-select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+    }
+
+.form-group {
+    margin-bottom: 0.75rem;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 600;
+        color: var(--dark-color);
+        font-size: 11px;
+    }
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background-color: var(--light-color);
+    color: black;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 12px 15px;
+}
+
+    .modal-header .btn-close {
+        transform: scale(0.8);
+    }
+
+.modal-body {
+    padding: 15px;
+    font-size: 12px;
+}
+
+.modal-footer {
+    padding: 10px 15px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.page-link {
+    color: var(--primary-color);
+    border: 1px solid #dee2e6;
+    padding: 4px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 11px;
+}
+
+    .page-link:hover {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Notifications */
+.alert {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.alert-success {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #155724;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #721c24;
+    border-left: 3px solid var(--danger-color);
+}
+
+.alert-warning {
+    background-color: rgba(243, 156, 18, 0.1);
+    color: #856404;
+    border-left: 3px solid var(--warning-color);
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+}
+
+    .search-box input {
+        padding: 6px 8px;
+        border: 1px solid #ddd;
+        border-radius: 3px 0 0 3px;
+        width: 180px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 12px;
+    }
+
+.btn-search {
+    padding: 6px 10px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid #ddd;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 12px;
+}
+
+    .btn-search:hover {
+        background-color: #f8f9fa;
+    }
+
+/* Contact Information Styling */
+.email {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.contact-number {
+    color: var(--dark-color);
+    font-weight: 600;
+    font-size: 11px;
+}
+/* Form text and help */
+.form-text {
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.invalid-feedback {
+    font-size: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .data-table {
+        font-size: 11px;
+    }
+
+        .data-table th,
+        .data-table td {
+            padding: 6px 8px;
+        }
+
+    .btn-edit,
+    .btn-delete,
+    .btn-details {
+        padding: 3px 6px;
+        font-size: 10px;
+        margin: 0 1px 1px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .card-header .row > div {
+        margin-bottom: 8px;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 5px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .data-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Compact modal layout */
+.modal-body .row {
+    margin: 0 -5px;
+}
+
+.modal-body .col-12 {
+    padding: 0 5px;
+}
+
+/* Button group for actions */
+.btn-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Ensure table columns are compact */
+.data-table th:nth-child(1), .data-table td:nth-child(1) { /* Supplier Name */
+    min-width: 150px;
+    max-width: 200px;
+}
+
+.data-table th:nth-child(2), .data-table td:nth-child(2) { /* Contact Person */
+    min-width: 120px;
+    max-width: 150px;
+}
+
+.data-table th:nth-child(3), .data-table td:nth-child(3) { /* Email */
+    min-width: 180px;
+    max-width: 220px;
+}
+
+.data-table th:nth-child(4), .data-table td:nth-child(4) { /* Contact Number */
+    min-width: 120px;
+    max-width: 150px;
+}
+
+.data-table th:nth-child(5), .data-table td:nth-child(5) { /* Actions */
+    width: 140px;
+}
+
+/* Fix for empty table row */
+.data-table td.text-center {
+    padding: 15px;
+}
+
+/* Improve modal form layout */
+.modal-body .mb-3 {
+    margin-bottom: 0.5rem !important;
+}
+
+/* Make sure all text is properly sized */
+body {
+    font-size: 12px;
+}
+
+h5.modal-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Supplier-specific status indicators */
+.supplier-active {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.supplier-inactive {
+    color: var(--gray-color);
+    font-style: italic;
+}
+
+/* Contact information styling */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+}
+
+    .contact-item i {
+        color: var(--primary-color);
+        width: 12px;
+    }
+
+/* Compact form layout for supplier */
+.form-compact .form-group {
+    margin-bottom: 0.4rem;
+}
+
+.form-compact .form-control {
+    padding: 4px 6px;
+    font-size: 11px;
+}
+
+.form-compact label {
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+/* Enhanced hover effects */
+.data-table tr {
+    transition: all 0.2s ease;
+}
+
+    .data-table tr:hover {
+        background-color: #f0f8ff;
+        transform: translateX(2px);
+    }
+
+/* Loading states */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+    .btn-loading:after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin: -8px 0 0 -8px;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        border-right-color: transparent;
+        animation: spin 1s linear infinite;
+    }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
