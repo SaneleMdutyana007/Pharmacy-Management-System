@@ -1,0 +1,19 @@
+﻿@model PharmacyManager.Models.ActiveIngredient
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ActiveIngredient</h4>
+    <hr />
+    <div>
+        @Model.IngredientName
+    </div>
+</div>
+<div>
+    <a asp-action="Update" asp-route-id="@Model?.ActiveIngredientId">Edit</a> |
+    <a asp-controller="ActiveIngredients" asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,286 @@
+﻿@model PharmacyManager.Models.Manager
+@{
+    ViewData["Title"] = "Manager Dashboard";
+}
+<link rel="stylesheet" href="~/css/dashboard.css" />
+
+<div class="dashboard-container">
+    <!-- Header Section -->
+    <div class="dashboard-header">
+       
+        <p class="dashboard-subtitle">Welcome back! Here's what's happening today.</p>
+    </div>
+    <!-- Main Content Grid -->
+    <div class="dashboard-grid">
+        <!-- Left Column - Quick Actions -->
+        <div class="dashboard-column">
+            <section class="quick-actions-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-rocket me-2"></i>Quick Actions
+                    </h2>
+                </div>
+
+                <div class="quick-actions-grid">
+                    <div class="quick-action-card">
+                        <div class="action-icon bg-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">New Order</h3>
+                            <p class="action-description">Create and manage customer orders</p>
+                            <a href="@Url.Action("Index", "Orders", new { tab = "new" })" class="action-button">
+                                <i class="fas fa-plus me-1"></i>Create Order
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quick-action-card">
+                        <div class="action-icon bg-success">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Reports</h3>
+                            <p class="action-description">View sales and inventory reports</p>
+                            <a href="@Url.Action("Index", "Reports")" class="action-button">
+                                <i class="fas fa-chart-line me-1"></i>View Reports
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quick-action-card">
+                        <div class="action-icon bg-info">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Medications</h3>
+                            <p class="action-description">Manage medication inventory</p>
+                            <a href="@Url.Action("Index", "Medications")" class="action-button">
+                                <i class="fas fa-list me-1"></i>View Medications
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="quick-action-card">
+                        <div class="action-icon bg-warning">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Inventory</h3>
+                            <p class="action-description">Stock management and tracking</p>
+                            <a href="@Url.Action("Index", "Stock")" class="action-button">
+                                <i class="fas fa-cubes me-1"></i>Manage Stock
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pharmacy Details Section -->
+            <section class="pharmacy-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-store me-2"></i>Pharmacy Details
+                    </h2>
+                    <div class="section-actions">
+                        @if (ViewBag.PharmacyExists == true)
+                        {
+                            <a href="@Url.Action("Update", "PharmacyDetails")" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-edit me-1"></i>Edit
+                            </a>
+                           
+                        }
+                        else
+                        {
+
+                            <a href="@Url.Action("Create", "PharmacyDetails")" class="btn btn-sm btn-primary">
+                                <i class="fas fa-plus-circle me-1"></i>Add Details
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                <div class="pharmacy-content">
+                    @if (ViewBag.PharmacyExists == true)
+                    {
+                        var pharmacy = ViewBag.Pharmacy as PharmacyManager.Models.Pharmacy;
+                        <div class="pharmacy-info-grid">
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-store me-2"></i>Pharmacy Name
+                                    </span>
+                                    <span class="info-value">@pharmacy.PharmacyName</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-id-card me-2"></i>Registration Number
+                                    </span>
+                                    <span class="info-value">@pharmacy.HealthCouncilRegNum</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-envelope me-2"></i>Email
+                                    </span>
+                                    <span class="info-value">@pharmacy.Email</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-globe me-2"></i>Website
+                                    </span>
+                                    <span class="info-value">@pharmacy.PharmacyURL</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-user-md me-2"></i>Responsible Pharmacist
+                                    </span>
+                                    <span class="info-value">@pharmacy.ResponsiblePharma</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-phone me-2"></i>Contact Number
+                                    </span>
+                                    <span class="info-value">@pharmacy.Contact</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item full-width">
+                                    <span class="info-label">
+                                        <i class="fas fa-map-marker-alt me-2"></i>Physical Address
+                                    </span>
+                                    <span class="info-value">@pharmacy.PhysicalAddress</span>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <span class="info-label">
+                                        <i class="fas fa-percentage me-2"></i>VAT Rate
+                                    </span>
+                                    <span class="info-value">@pharmacy.VAT%</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-info-circle me-3 fs-4"></i>
+                                <div>
+                                    <h5 class="alert-heading mb-2">No Pharmacy Details Found</h5>
+                                    <p class="mb-0">Please add your pharmacy information to continue using the system.</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column - Notifications -->
+        <div class="dashboard-column">
+            <section class="notifications-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-bell me-2"></i>Recent Updates
+                    </h2>
+                    <div class="notification-badge" id="notificationCount">0</div>
+                </div>
+
+                <div class="notifications-container">
+                    <div class="notification-list" id="notificationList">
+                        <div class="empty-state">
+                            <i class="fas fa-bell-slash fa-3x mb-3 text-muted"></i>
+                            <h4>No Notifications</h4>
+                            <p class="text-muted">Updates will appear here when you have new activity.</p>
+                        </div>
+                    </div>
+
+                    <div class="notifications-footer">
+                        <small class="text-muted">Auto-refreshes every 30 seconds</small> <br />
+
+                        <button class="btn btn-sm btn-outline-secondary" onclick="loadNotifications()">
+                            <i class="fas fa-redo"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-content">
+                    <div class="modal-icon" id="modalIcon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="modal-title-content">
+                        <h5 class="modal-title" id="modalTitle">Notification</h5>
+                        <p class="modal-time text-muted" id="modalTime"></p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">No message available.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" onclick="markAsReadFromModal()">
+                    <i class="fas fa-check me-1"></i>Mark as Read
+                </button>
+                <button type="button" class="btn btn-primary" id="viewDetailsBtn">
+                    <i class="fas fa-external-link-alt me-1"></i>View Details
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success/Error Messages -->
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i> @ViewBag.SuccessMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i> @ViewBag.ErrorMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (ViewBag.InfoMessage != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <i class="fas fa-info-circle me-2"></i> @ViewBag.InfoMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- URL Data for JavaScript -->
+<div id="urls-data"
+     data-url-medication-details="@Url.Action("Index", "Medications")"
+     data-url-doctor-details="@Url.Action("Index", "Doctors")"
+     data-url-supplier-details="@Url.Action("Index", "Suppliers")"
+     data-url-order-details="@Url.Action("Index", "Orders")"
+     data-url-get-notifications="@Url.Action("GetRecentNotifications", "Dashboard")"
+     data-url-get-notification-count="@Url.Action("GetNotificationCount", "Dashboard")"
+     data-url-mark-as-read="@Url.Action("MarkNotificationAsRead", "Dashboard")"
+     style="display: none;">
+</div>
+
+@section Scripts {
+    <script src="~/js/dashboard.js"></script>
+}

@@ -1,0 +1,61 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-xl-5">
+            <div class="card shadow-lg rounded-4" style="height: 650px;">
+                <!-- Taller card -->
+                <div class="card-body d-flex flex-column justify-content-center p-5">
+                    <h2 class="text-center mb-4" style="font-size: 2rem;">Sign in to your account</h2>
+                    <form id="account" method="post" class="flex-grow-1">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Input.Email" class="form-control form-control-lg" autocomplete="username" placeholder="name@example.com" aria-required="true" />
+                            <label asp-for="Input.Email">Email</label>
+                            <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Input.Password" class="form-control form-control-lg" type="password" autocomplete="current-password" placeholder="Password" aria-required="true" />
+                            <label asp-for="Input.Password">Password</label>
+                            <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            <label class="form-check-label" asp-for="Input.RememberMe">
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+
+                        <button id="login-submit" type="submit" class="btn w-100 py-3 mb-4" style="background-color: #001f3f; color: white; font-size: 1.2rem;">
+                            Login
+                        </button>
+
+                        <div class="text-center mt-auto">
+                            <a id="forgot-password" asp-page="./ForgotPassword" class="d-block mb-2 text-decoration-none" style="color: #001f3f;">Forgot your password?</a>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="d-block mb-2 text-decoration-none" style="color: #001f3f;">Register as a new user</a>
+                            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="d-block text-decoration-none" style="color: #001f3f;">Resend email confirmation</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
